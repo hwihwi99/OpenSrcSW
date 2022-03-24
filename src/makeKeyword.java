@@ -78,7 +78,7 @@ public class makeKeyword {
 
         for(int i = 0; i<keywordList.size(); i++) {
             Keyword keyword = keywordList.get(i);
-            stringBuilder.append(keyword.getString()).append(keyword.getCnt()).append("#");
+            stringBuilder.append(keyword.getString()).append(":").append(keyword.getCnt()).append("#");
         }
         return stringBuilder.toString();
     }
