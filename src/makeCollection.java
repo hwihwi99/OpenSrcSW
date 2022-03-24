@@ -17,7 +17,7 @@ import org.w3c.dom.Element;
 
 
 
-public class Xml{
+public class makeCollection {
 
     public File[] makeFileList(String path) { // 5개의 파일이 들어있는 경로를 입력을 하면 파일이 쭉 들어온다.
         File dir = new File(path);

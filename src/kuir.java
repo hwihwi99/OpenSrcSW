@@ -4,11 +4,11 @@ import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import java.io.IOException;
 
-public class Main {
+public class kuir {
     public static void main(String[] args) throws ParserConfigurationException, IOException, TransformerException, SAXException {
-        Xml xml = new Xml();
+        makeCollection xml = new makeCollection();
         xml.run();
-        MorphemeAnalysis morphemeAnalysis = new MorphemeAnalysis();
+        makeKeyword morphemeAnalysis = new makeKeyword();
         morphemeAnalysis.morphemeAnalysis();
     }
 }
