@@ -62,7 +62,7 @@ public class makeCollection {
         transformer.setOutputProperty(OutputKeys.INDENT,"yes");
 
         DOMSource source = new DOMSource(document);
-        StreamResult result= new StreamResult(new FileOutputStream(new File("src/collection.xml")));
+        StreamResult result= new StreamResult(new FileOutputStream(new File("result/collection.xml")));
         transformer.transform(source,result);
     }
 

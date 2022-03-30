@@ -68,7 +68,7 @@ public class makeKeyword {
         transformer.setOutputProperty(OutputKeys.INDENT,"yes");
 
         DOMSource source = new DOMSource(rootTag);
-        StreamResult result= new StreamResult(new FileOutputStream(new File("src/index.xml")));
+        StreamResult result= new StreamResult(new FileOutputStream(new File("result/index.xml")));
         transformer.transform(source,result);
     }
     private String kkmaString(String inputBody) {
