@@ -15,7 +15,7 @@ public class indexPost {
 
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder = factory.newDocumentBuilder();
-        File file = new File("C:\\Users\\chamg\\OneDrive\\바탕 화면\\4학년 1학기\\OpenSrc\\SimpleIR\\src\\index.xml");
+        File file = new File("result/index.xml");
 
         // index.xml 파싱을 위한 곳
         // 일단 root 태그 가져오고 그 바로 아래에 있는 doc 태그를 읽어왔습니다.
@@ -75,7 +75,7 @@ public class indexPost {
             }
         }
 
-        FileOutputStream fileOutputStream = new FileOutputStream("src/indexs.post");
+        FileOutputStream fileOutputStream = new FileOutputStream("result/index.post");
 
         ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
         objectOutputStream.writeObject(resultHashMap);
@@ -83,7 +83,7 @@ public class indexPost {
 
         objectOutputStream.close();
 
-        FileInputStream fileInputStream = new FileInputStream("src/indexs.post");
+        FileInputStream fileInputStream = new FileInputStream("result/index.post");
         ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
 
         Object object = objectInputStream.readObject();
