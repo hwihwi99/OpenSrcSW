@@ -29,7 +29,7 @@ public class makeCollection {
         DocumentBuilder builder = builderFactory.newDocumentBuilder();
         Document document = builder.newDocument();
 
-        File[] files = makeFileList("C:\\Users\\chamg\\OneDrive\\바탕 화면\\4학년 1학기\\OpenSrc\\SimpleIR\\data");
+        File[] files = makeFileList("data");
 
         // docs 태그 생성 -> root 태그
         Element docs = document.createElement("docs");

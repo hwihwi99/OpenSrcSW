@@ -22,7 +22,7 @@ public class makeKeyword {
 
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder = factory.newDocumentBuilder();
-        File file = new File("C:\\Users\\chamg\\OneDrive\\바탕 화면\\4학년 1학기\\OpenSrc\\SimpleIR\\src\\collection.xml");
+        File file = new File("result/collection.xml");
 
         // Collection.xml 파싱을 위한 곳
         // 일단 root 태그 가져오고 그 바로 아래에 있는 doc 태그를 읽어왔습니다.
