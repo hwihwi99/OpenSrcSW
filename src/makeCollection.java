@@ -24,12 +24,12 @@ public class makeCollection {
         return dir.listFiles();
     }
 
-    public void run() throws ParserConfigurationException, IOException, TransformerException {
+    public void run(String path) throws ParserConfigurationException, IOException, TransformerException {
         DocumentBuilderFactory builderFactory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder = builderFactory.newDocumentBuilder();
         Document document = builder.newDocument();
 
-        File[] files = makeFileList("data");
+        File[] files = makeFileList(path);
 
         // docs 태그 생성 -> root 태그
         Element docs = document.createElement("docs");
@@ -62,7 +62,7 @@ public class makeCollection {
         transformer.setOutputProperty(OutputKeys.INDENT,"yes");
 
         DOMSource source = new DOMSource(document);
-        StreamResult result= new StreamResult(new FileOutputStream(new File("result/collection.xml")));
+        StreamResult result= new StreamResult(new FileOutputStream(new File("./collection.xml")));
         transformer.transform(source,result);
     }
 

@@ -18,11 +18,11 @@ import java.io.IOException;
 
 
 public class makeKeyword {
-    public void morphemeAnalysis() throws ParserConfigurationException, IOException, SAXException, TransformerException {
+    public void morphemeAnalysis(String path) throws ParserConfigurationException, IOException, SAXException, TransformerException {
 
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder = factory.newDocumentBuilder();
-        File file = new File("result/collection.xml");
+        File file = new File(path);
 
         // Collection.xml 파싱을 위한 곳
         // 일단 root 태그 가져오고 그 바로 아래에 있는 doc 태그를 읽어왔습니다.
@@ -68,7 +68,7 @@ public class makeKeyword {
         transformer.setOutputProperty(OutputKeys.INDENT,"yes");
 
         DOMSource source = new DOMSource(rootTag);
-        StreamResult result= new StreamResult(new FileOutputStream(new File("result/index.xml")));
+        StreamResult result= new StreamResult(new FileOutputStream(new File("./index.xml")));
         transformer.transform(source,result);
     }
     private String kkmaString(String inputBody) {
