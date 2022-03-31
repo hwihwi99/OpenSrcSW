@@ -25,7 +25,7 @@ public class kuir {
             if(args[2].equals("-q")) {
                 StringBuilder stringBuilder = new StringBuilder();
                 for(int i = 3; i<args.length; i++) {
-                    stringBuilder.append(args[i]);
+                    stringBuilder.append(args[i]).append(" ");
                 }
                 query = stringBuilder.toString();
             }
