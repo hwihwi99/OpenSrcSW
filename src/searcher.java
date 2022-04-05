@@ -23,6 +23,7 @@ public class searcher {
         for(int i = 0; i<keywordList.size(); i++) {
             Keyword keyword = keywordList.get(i);
             resultString.put(keyword.getString(),keyword.getCnt());
+            System.out.println(keyword.getString()+" "+keyword.getCnt());
         }
 
         return resultString;
@@ -32,7 +33,7 @@ public class searcher {
 
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder = factory.newDocumentBuilder();
-        File file = new File("./collection.xml");
+        File file = new File("./index.xml");
 
         Document document = builder.parse(file);
         Element root = document.getDocumentElement();
@@ -60,20 +61,21 @@ public class searcher {
 
         HashMap<String, ArrayList<Double>> keyWordList = new HashMap<>();
 
+
+        // index.post에서 입력받은 키워드에 있는 key값과 동일한 정보만 받아오기
         Iterator<String> it = inputResult.keySet().iterator();
         while (it.hasNext()) {
             String key = it.next();
             HashMap<Integer,Double> value = (HashMap<Integer, Double>) keywords.get(key);
 
             ArrayList<Double> needValue = new ArrayList<>();
-            for(int i = 0; i<5; i++) {
+            for(int i = 0; i< value.size(); i++) {
                 needValue.add(value.get(i));
             }
             keyWordList.put(key,needValue);
         }
 
-        // 해쉬맵에 키워드 , ArrayList로 만들어 놓고
-
+        // 파일 제목 + 유사도 저장
         HashMap<String, Double> answer = new HashMap<>();
 
         for(int i = 0; i<5; i++) {
@@ -83,11 +85,18 @@ public class searcher {
                 String key = l.next();
                 temp += inputResult.get(key) * keyWordList.get(key).get(i);
             }
-            answer.put(titleList.get(i),temp);
+            if(temp != 0) {
+                answer.put(titleList.get(i),temp);
+            }
         }
 
         List<String> answerList = new ArrayList<>(answer.keySet());
         Collections.sort(answerList, (o1,o2) -> answer.get(o2).compareTo(answer.get(o1)));
+
+        if(answerList.size() == 0) {
+            System.out.println("검색된 문서가 없습니다");
+            return;
+        }
 
         int i = 0;
         StringBuilder sb = new StringBuilder();
