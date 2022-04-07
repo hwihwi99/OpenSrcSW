@@ -29,7 +29,7 @@ public class searcher {
         return resultString;
     }
 
-    public void Calsim(String path, String query) throws IOException, ClassNotFoundException, ParserConfigurationException, SAXException {
+    public void InnerProduct(String path, String query) throws IOException, ClassNotFoundException, ParserConfigurationException, SAXException {
 
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder = factory.newDocumentBuilder();
