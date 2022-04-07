@@ -11,11 +11,11 @@ import java.util.*;
 
 public class indexPost {
     @SuppressWarnings({"rawtypes", "unchecked", "nls"})
-    public void makeIndexPost() throws IOException, ParserConfigurationException, SAXException, ClassNotFoundException {
+    public void makeIndexPost(String path) throws IOException, ParserConfigurationException, SAXException, ClassNotFoundException {
 
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder = factory.newDocumentBuilder();
-        File file = new File("result/index.xml");
+        File file = new File(path);
 
         // index.xml 파싱을 위한 곳
         // 일단 root 태그 가져오고 그 바로 아래에 있는 doc 태그를 읽어왔습니다.
@@ -75,7 +75,7 @@ public class indexPost {
             }
         }
 
-        FileOutputStream fileOutputStream = new FileOutputStream("result/index.post");
+        FileOutputStream fileOutputStream = new FileOutputStream("./index.post");
 
         ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
         objectOutputStream.writeObject(resultHashMap);
@@ -83,7 +83,7 @@ public class indexPost {
 
         objectOutputStream.close();
 
-        FileInputStream fileInputStream = new FileInputStream("result/index.post");
+        FileInputStream fileInputStream = new FileInputStream("./index.post");
         ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
 
         Object object = objectInputStream.readObject();
