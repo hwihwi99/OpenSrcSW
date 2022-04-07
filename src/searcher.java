@@ -29,7 +29,7 @@ public class searcher {
         return resultString;
     }
 
-    public void InnerProduct(String path, String query) throws IOException, ClassNotFoundException, ParserConfigurationException, SAXException {
+    public void CalcSim(String path, String query) throws IOException, ClassNotFoundException, ParserConfigurationException, SAXException {
 
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder = factory.newDocumentBuilder();
@@ -78,15 +78,39 @@ public class searcher {
         // 파일 제목 + 유사도 저장
         HashMap<String, Double> answer = new HashMap<>();
 
+
+
         for(int i = 0; i<5; i++) {
+            double A = 0, B = 0, result = 0;
             Iterator<String> l = inputResult.keySet().iterator();
             double temp = 0;
+
             while (l.hasNext()) {
                 String key = l.next();
                 temp += inputResult.get(key) * keyWordList.get(key).get(i);
             }
-            if(temp != 0) {
-                answer.put(titleList.get(i),temp);
+
+            l = inputResult.keySet().iterator();
+            while (l.hasNext()) {
+                String key = l.next();
+                double result1 = Math.round(inputResult.get(key) * 100) / 100.0;
+
+                A += result1 * result1;
+            }
+
+            l = inputResult.keySet().iterator();
+            while (l.hasNext()) {
+                String key = l.next();
+                double result2 = Math.round( keyWordList.get(key).get(i) * 100) / 100.0;
+                B += result2 * result2;
+            }
+
+            if((Math.sqrt(A) * Math.sqrt(B) != 0)) {
+                result = temp / (Math.sqrt(A) * Math.sqrt(B));
+            }
+            System.out.println(result);
+            if(result != 0) {
+                answer.put(titleList.get(i),result);
             }
         }
 

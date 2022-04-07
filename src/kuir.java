@@ -29,7 +29,7 @@ public class kuir {
                 }
                 query = stringBuilder.toString();
             }
-            searcher.Calsim(path,query);
+            searcher.CalcSim(path,query);
         }
     }
 }
