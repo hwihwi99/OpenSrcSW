@@ -30,6 +30,20 @@ public class kuir {
                 query = stringBuilder.toString();
             }
             searcher.CalcSim(path,query);
+        } else if(command.equals("-m")) {
+            Midterm midterm = new Midterm();
+            String query2 = "";
+            if(args[2].equals("-q")) {
+                StringBuilder stringBuilder = new StringBuilder();
+                for(int i = 3; i<args.length; i++) {
+                    stringBuilder.append(args[i]).append(" ");
+                }
+                query2 = stringBuilder.toString();
+                midterm.showSnippet(path,query2);
+            } else {
+                System.out.println("잘못된 args 입력값 입니다.");
+            }
         }
+
     }
 }
