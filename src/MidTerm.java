@@ -15,7 +15,7 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class Midterm {
+public class MidTerm {
 
     public void showSnippet(String path, String query) throws ParserConfigurationException, IOException, SAXException {
 

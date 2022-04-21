@@ -31,7 +31,7 @@ public class kuir {
             }
             searcher.CalcSim(path,query);
         } else if(command.equals("-m")) {
-            Midterm midterm = new Midterm();
+            MidTerm midterm = new MidTerm();
             String query2 = "";
             if(args[2].equals("-q")) {
                 StringBuilder stringBuilder = new StringBuilder();
