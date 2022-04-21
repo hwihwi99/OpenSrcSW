@@ -20,6 +20,7 @@ import java.io.IOException;
 public class makeKeyword {
     public void morphemeAnalysis(String path) throws ParserConfigurationException, IOException, SAXException, TransformerException {
 
+        // xml 파일을 만들기 위한 클래스
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder = factory.newDocumentBuilder();
         File file = new File(path);
@@ -36,6 +37,7 @@ public class makeKeyword {
         Element docs = rootTag.createElement("docs");
         rootTag.appendChild(docs);
 
+        //  collection.xml을 토대로 총 내용을 읽어온다.
         for(int i = 0; i<nodeLists.getLength(); i++) {
             Element node = (Element) nodeLists.item(i);
 
@@ -72,14 +74,17 @@ public class makeKeyword {
         transformer.transform(source,result);
     }
     private String kkmaString(String inputBody) {
+        //kkma를 통해서 스트링을 분석하고
         StringBuilder stringBuilder = new StringBuilder();
         KeywordExtractor keywordExtractor = new KeywordExtractor();
         KeywordList keywordList = keywordExtractor.extractKeyword(inputBody, true);
 
+        // 그 스트링을 통해서 형태를 출력하고
         for(int i = 0; i<keywordList.size(); i++) {
             Keyword keyword = keywordList.get(i);
             stringBuilder.append(keyword.getString()).append(":").append(keyword.getCnt()).append("#");
         }
+        // 반환한다.
         return stringBuilder.toString();
     }
 }
